@@ -1,0 +1,22 @@
+.app{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows:1fr;
+    align-content: stretch;
+    background-color: white;
+    border-radius: 20px;
+    font-family:  sans-serif;
+    margin:0 auto;
+    width: 1200px;
+
+
+}
+
+
+.app-header{
+    text-align: center;
+    font-size: 60px;
+    font-family: Lato, sans-serif;
+
+}
+

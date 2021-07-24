@@ -1,0 +1,86 @@
+.form-form{
+    display: grid;
+    grid-template-columns:1fr 2fr;
+    grid-template-areas: 'label1 input1'
+                         'label2 input2'
+                         '.      submit';
+    margin:0 100px;
+    grid-gap:10px;
+    align-content: end;
+}
+
+.form-h2{
+    font-family: Lato,sans-serif;
+    font-size: 3em;
+    text-align: center;
+}
+
+.form-form input[type*='text']{
+    width: 50%;
+    border-radius: 4px;
+    font-size: 17px;
+    font-family:Lato,sans-serif;
+    padding:5px;
+    border:none
+}
+
+.form-form textarea{
+    resize: none;
+    width: 50%;
+    border-radius: 4px;
+    border:none;
+    font-size: 17px;
+    font-family:Lato,sans-serif;
+    padding:5px;
+}
+
+ .submit{
+     display: block;
+     border-radius: 3px;
+     color:white;
+     background-color: black;
+     height: 30px;
+     width: 100px;
+     font-family: Lato,sans-serif;
+
+ }
+ .form-form label{
+     display: inline-block;
+     justify-self: end;
+     font-family: Lato,sans-serif;
+     font-size: 20px;
+     align-self: end;
+     height: 20px;
+
+ }
+
+ #label1{
+     grid-area: label1;
+     align-self:start;
+     margin-top:0px;
+ }
+
+ #label2{
+     grid-area:label2;
+     align-self:start;
+ }
+
+ #input1{
+     grid-area:input1
+ }
+ #input2{
+     grid-area:input2
+ }
+ input.submit{
+     grid-area: submit;
+     width: 80px;
+
+ }
+
+ input.submit:hover{
+     background-color: mediumpurple;
+ }
+
+ .form-form input::placeholder, .form-form textarea::placeholder{
+     color: #bfbfbf;
+ }
