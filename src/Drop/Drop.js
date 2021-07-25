@@ -4,6 +4,7 @@ import './Drop.css';
 import colorsContext from "../context";
 
 function Drop(props) {
+    console.log(props.len);
     let color = React.useContext(colorsContext)[props.stage];
     const [collected, drop] = useDrop(() => ({
         accept: 'card',

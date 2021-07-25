@@ -84,3 +84,7 @@
  .form-form input::placeholder, .form-form textarea::placeholder{
      color: #bfbfbf;
  }
+
+ .form{
+     margin-top:80px;
+ }

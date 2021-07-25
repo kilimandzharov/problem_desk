@@ -25,7 +25,7 @@ function Form(props) {
 
     return (
 
-        <React.Fragment>
+        <div className='form'>
             <h2 className='form-h2'>Create your own personal task</h2>
             <form onSubmit={addToCol} className='form-form'>
 
@@ -42,7 +42,7 @@ function Form(props) {
                                                                                   placeholder='Put there some extra info'/>
                 <input type='submit' value='SUBMIT' className='submit'/>
             </form>
-        </React.Fragment>
+        </div>
 
     )
 }

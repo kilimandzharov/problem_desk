@@ -11,16 +11,23 @@ import store from '../store';
 function App() {
     let colors = ['#ec0202', '#d4661c', '#d6824b', '#d6c34b', '#8acc48'];
     let [dones, setDones] = React.useState([]);
+
     React.useEffect(() => {
-        let state = store.getState();
+        const state = store.getState();
         let table = document.querySelector('.app');
-        if (dones.length <= 4) {
+        if (dones.length <= 4 && !(dones.length===4 && state==='deleted') ) {
             return
         }
-        table.style.height = (dones.length * 110 + 130) + 'px';
-        if (state === 'added') {
-            window.scrollBy(0, 110);
+        table.style.height =dones.length <= 4 ? '610px': (dones.length * 120 + 130) + 'px';
+        let columns = Array.from(document.querySelectorAll('.drop-target'));
+        for (let i = 0; i < columns.length; i++) {
+            columns[i].style.height = dones.length <= 4 ? '610px' : (dones.length * 120 + 130) + 'px';
         }
+        setTimeout(()=>{
+            if (state === 'added') {
+                window.scrollBy(0, 110);
+            }
+        },300);
 
     }, [dones.length]);
 
@@ -42,13 +49,13 @@ function App() {
             alert('Your text is too long');
             return
         }
-        if (dones.length > 10) {
+        if (dones.length >= 10) {
             alert('You cant add more than 10 tasks');
             return
         }
 
         let info = new Array(2).fill(null).map((el, index) => event.target[index].value).filter(item => item);
-            for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < 2; i++) {
             event.target[i].value = '';
         }
 
@@ -64,7 +71,7 @@ function App() {
             store.dispatch({
                 type: 'todos/Added'
             })
-        } else{
+        } else {
             alert('Every note must have a title and a short description');
         }
 
@@ -99,10 +106,10 @@ function App() {
             <h1 className='app-header'>Tasks Desk</h1>
             <colorsContext.Provider value={colors}>
                 <DndProvider debugMode={true} backend={HTML5Backend}>
-                    <div className='app' style={{height: '610px'}}>
+                    <div className='app' style={{height:'610px'}} >
                         {
                             infoHeaders.map((el, index) => <Drop stage={index} handleDrop={handleDrop}
-                                                                 canRemove={canRemove} info={el}>{
+                                                                 canRemove={canRemove} info={el} len={dones.length}>{
                                 dones.reduce((accum, elem, ind) => elem.condition === index ? [...accum,
                                     <Drag key={ind} id={elem.id} header={elem.header} more={elem.more}
                                           condition={elem.condition} order={elem.order}
